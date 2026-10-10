@@ -1,2 +1,0 @@
-# portofolio
-Web Portofolio Andrew
