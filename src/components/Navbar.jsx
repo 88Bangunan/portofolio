@@ -9,7 +9,7 @@ export const Navbar = () => {
     const [responsiveNav, setResponsiveNav] = useState(false)
 
     return (
-      <div className="fixed top-0 left-0 right-0 z-10 bg-black text-white p-8 box-border">
+      <div className="fixed top-0 left-0 right-0 z-20 bg-black text-white p-8 box-border">
         <div className="w-10/11 mx-auto flex justify-between items-center">
           <div className="navbar-title-container font-bold">
             <span className="text-primary text-2xl selection:bg-primary selection:text-white">

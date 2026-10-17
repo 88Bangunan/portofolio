@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { ScrollFadeUp } from "../../components/ScrollFadeUp";
 
 const offerLists = [
   {
@@ -94,74 +95,76 @@ export const OfferCarousel = () => {
   };
 
   return (
-    <div className="offer-container flex flex-col gap-y-5 py-27 box-border">
-      <div className="offer-heading flex flex-col gap-y-8 text-center">
-        <span className="text-gray-400/80 font-medium text-lg">
-          What Do I Offer
-        </span>
-        <h3 className="capitalize text-white font-semibold leading-12 text-xl">
-          Creates a professional website that directly{" "}
-          <span className="block bg-primary font-bold text-white p-1 w-8/9 mx-auto box-border rounded-lg">
-            solves real-world problems
-          </span>{" "}
-          and is proven to{" "}
-          <span className="block bg-primary font-bold text-white p-1 w-3/4 mx-auto box-border rounded-lg">
-            Boost business sales
+    <ScrollFadeUp>
+      <div className="offer-container flex flex-col gap-y-5 py-27 box-border">
+        <div className="offer-heading flex flex-col gap-y-5">
+          <span className="text-gray-400/50 text-lg tracking-widest">
+            What Do I Offer
           </span>
-        </h3>
-      </div>
-      <div className="offer-outer-container pt-8 box-border">
-        <div className="offer-carousel-container bg-gray-500/50 p-8 box-border rounded-lg">
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-in-out"
-              style={{ transform: `translateX(-${activeOfferIndex * 100}%)` }}
-            >
-              {offerSlides.map((offer, index) => (
-                <div
-                  key={index + 1}
-                  className="min-w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
-                >
-                  {offer.map((item) => (
-                    <div
-                      key={item.id}
-                      className="border-2 border-primary bg-gray-400/50 rounded-lg p-5 box-border drop-shadow-xl flex flex-col items-center justify-center gap-y-3"
-                    >
-                      <img
-                        src={item.img}
-                        className="w-full object-cover aspect-10/10"
-                        alt=""
-                      />
-                      <span className="text-lg text-primary font-semibold">
-                        {item.offerText}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              ))}
+          <h3 className="capitalize text-white font-semibold leading-12 text-xl sm:text-2xl">
+            Creates a professional website that directly{" "}
+            <span className="block bg-primary font-bold text-white py-1 px-5 box-border rounded-full w-full sm:w-2/3 md:w-4/7 lg:w-5/11 xl:w-6/17">
+              solves real-world problems
+            </span>{" "}
+            and is proven to{" "}
+            <span className="block bg-primary font-bold text-white py-1 px-5 box-border rounded-full w-full sm:w-2/4 md:w-4/8 lg:w-5/14 xl:w-6/21">
+              Boost business sales
+            </span>
+          </h3>
+        </div>
+        <div className="offer-outer-container pt-8 box-border">
+          <div className="offer-carousel-container bg-gray-500/50 p-8 box-border rounded-xl">
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{ transform: `translateX(-${activeOfferIndex * 100}%)` }}
+              >
+                {offerSlides.map((offer, index) => (
+                  <div
+                    key={index + 1}
+                    className="min-w-full grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"
+                  >
+                    {offer.map((item) => (
+                      <div
+                        key={item.id}
+                        className="bg-gray-400/50 rounded-xl p-5 box-border drop-shadow-xl flex flex-col items-center justify-center gap-y-3"
+                      >
+                        <img
+                          src={item.img}
+                          className="w-full object-cover aspect-10/10"
+                          alt=""
+                        />
+                        <span className="text-lg text-blue-800 font-semibold">
+                          {item.offerText}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-          <div className="flex items-center justify-center gap-x-3 py-5 box-border">
-            <MdKeyboardArrowLeft
-              className="text-2xl text-white font-semibold cursor-pointer"
-              onClick={handlePreviousCarousel}
-            />
-            <div className="flex items-center gap-x-3">
-              {offerSlides.map((_, index) => (
-                <div
-                  key={index}
-                  onClick={() => setActiveOfferIndex(index)}
-                  className={`rounded-lg py-1 px-3 box-border ${activeOfferIndex === index && "bg-primary"} cursor-pointer bg-gray-400`}
-                ></div>
-              ))}
+            <div className="flex items-center justify-center gap-x-3 py-5 box-border">
+              <MdKeyboardArrowLeft
+                className="text-2xl text-white font-semibold cursor-pointer"
+                onClick={handlePreviousCarousel}
+              />
+              <div className="flex items-center gap-x-3">
+                {offerSlides.map((_, index) => (
+                  <div
+                    key={index}
+                    onClick={() => setActiveOfferIndex(index)}
+                    className={`rounded-xl py-1 px-3 box-border ${activeOfferIndex === index && "bg-primary"} cursor-pointer bg-gray-400`}
+                  ></div>
+                ))}
+              </div>
+              <MdKeyboardArrowRight
+                className="text-2xl text-white font-semibold cursor-pointer"
+                onClick={handleNextCarousel}
+              />
             </div>
-            <MdKeyboardArrowRight
-              className="text-2xl text-white font-semibold cursor-pointer"
-              onClick={handleNextCarousel}
-            />
           </div>
         </div>
       </div>
-    </div>
+    </ScrollFadeUp>
   );
 };
