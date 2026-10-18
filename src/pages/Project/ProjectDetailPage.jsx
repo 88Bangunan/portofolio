@@ -9,7 +9,6 @@ function ProjectDetailPage() {
     const {projects} = useContext(ProjectContext)
 
     const project = projects.find(project => project.slug === slug)
-    console.log(project)
 
     return (
       <div className="pb-30 box-border">

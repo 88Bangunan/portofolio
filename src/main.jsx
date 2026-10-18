@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router";
 import { ProjectProvider } from "./context/ProjectContext.jsx";
+import { AchievementProvider } from "./context/AchievementContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ProjectProvider>
-        <App />
+        <AchievementProvider>
+          <App />
+        </AchievementProvider>
       </ProjectProvider>
     </BrowserRouter>
   </StrictMode>,

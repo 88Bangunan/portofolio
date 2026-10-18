@@ -10,7 +10,7 @@ export const ProjectProvider = ({ children }) => {
         title: "88Bangunan SEO Optimization",
         slug: "88bangunan-seo-optimization",
         image: "/Andrew-Projects/e-commerce-specialist.png",
-        category: "E-COMMERCE STRATEGY",
+        category: "E-Commerce Strategy",
         role: "Digital Strategist / E-Commerce Specialist",
         description: [
           {
@@ -38,7 +38,7 @@ export const ProjectProvider = ({ children }) => {
         title: "88Bangunan Web Design",
         slug: "88bangunan-web-design",
         image: "/Andrew-Projects/88bangunan-web-design.png",
-        category: "WEB DEVELOPMENT",
+        category: "Web Development",
         role: "Front-End Web Developer",
         description: [
           {
@@ -86,7 +86,7 @@ export const ProjectProvider = ({ children }) => {
         title: "FIELDIFY Web Design",
         slug: "fieldify-web-design",
         image: "/Andrew-Projects/FIELDIFY-web-design.png",
-        category: "WEB DEVELOPMENT",
+        category: "Web Development",
         role: "Front-End Web Developer",
         description: [
           {
@@ -110,7 +110,7 @@ export const ProjectProvider = ({ children }) => {
         title: "Sedot WC Koh Liu Web Design",
         slug: "sedot-wc-koh-liu-web-design",
         image: "/Andrew-Projects/sedot-wc-koh-liu-web-design.png",
-        category: "WEB DEVELOPMENT",
+        category: "Web Development",
         role: "Front-End Web Developer",
         description: [
           {

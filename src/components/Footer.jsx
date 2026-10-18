@@ -8,12 +8,27 @@ import {
 } from "react-icons/hi2";
 import { Link } from "react-router";
 import { ScrollFadeUp } from "./ScrollFadeUp";
+import { checkEmailFormat } from "../utils/checkEmailFormat";
 
 export const Footer = () => {
   const textContact = `Hallo Andrew 👋`;
   const encodedText = encodeURIComponent(textContact);
 
+  const emailTextSubject = `Inquiry: [Nama Proyek/Kolaborasi Baru] — [Nama Anda]`;
+   const encodedSubject = encodeURIComponent(emailTextSubject)
+
+   const emailTextBody = `Halo [Nama Anda],\n\nSaya [Nama Anda / Perusahaan Anda] tertarik untuk mendiskusikan sebuah proyek dengan Anda.\n\nBerikut adalah ringkasan singkatnya:\n- Jenis proyek: [Contoh: Website Redesign / Mobile App / Branding]\n- Perkiraan waktu/deadline: [Contoh: 1 bulan ke depan]\n- Deskripsi singkat: [Tuliskan detail kebutuhan Anda di sini]\n\nAnda bisa menghubungi saya kembali melalui email ini atau nomor WhatsApp: [Nomor HP/WA Anda - opsional].\n\nTerima kasih!`;
+   const encodedBody = encodeURIComponent(emailTextBody)
+
   const [showPopUp, setShowPopUp] = useState(false);
+
+  const [projectInquiry, setProjectInquiry] = useState({
+    name: "",
+    email: "",
+    description: ""
+  })
+
+  const [error, setError] = useState({})
 
   const handleCopyText = async () => {
     const textMail = `andrew17288@gmail.com`;
@@ -29,8 +44,38 @@ export const Footer = () => {
     }
   };
 
+  const handleError = () => {
+    const newErrors = {}
+
+    if(projectInquiry.name.trim().length <= 0) newErrors.name = "Name can't be empty"
+
+    if(projectInquiry.email.trim().length <= 0) newErrors.email = "Email can't be empty"
+    else if(!checkEmailFormat(email.trim())) newErrors.email = "Email format is not valid"
+
+    if(projectInquiry.description.trim().length <= 0) newErrors.description = "Please fill in project description field"
+
+    return newErrors
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    const validate = handleError()
+    setError(validate)
+    if(Object.keys(validate).length > 0) return
+
+
+  }
+
+  const handleChange = (e) => {
+    const {name, value} = e.target 
+
+    setError({...error, [name]: ""})
+
+    setProjectInquiry({
+        ...projectInquiry,
+        [name]: value
+    })
   }
 
   return (
@@ -57,11 +102,15 @@ export const Footer = () => {
             </ScrollFadeUp>
             <ScrollFadeUp>
               <div className="button-container flex flex-col sm:flex-row sm:gap-x-3 sm:items-center sm:justify-between gap-y-3">
-                <div className="w-3/5 ">
-                  <button className="bg-white p-3 box-border flex items-center justify-center gap-x-2 rounded-full hover:bg-gray-100/80 cursor-pointer transition duration-500 ease-in-out w-full">
-                    <span>Start a Project</span>
-                    <FiArrowUpRight className="text-xl" />
-                  </button>
+                <div className="w-3/5">
+                  <a
+                    href={`mailto:andrew17288@gmail.com?subject=${encodedSubject}&body=${encodedBody}`}
+                  >
+                    <button className="bg-white p-3 box-border flex items-center justify-center gap-x-2 rounded-full hover:bg-gray-100/80 cursor-pointer transition duration-500 ease-in-out w-full">
+                      <span>Start a Project</span>
+                      <FiArrowUpRight className="text-xl" />
+                    </button>
+                  </a>
                 </div>
                 <div className="w-3/4">
                   <button
@@ -86,29 +135,46 @@ export const Footer = () => {
             </ScrollFadeUp>
             <ScrollFadeUp>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
-                <div className="bg-gray-800/50 border border-gray-300/20 rounded-2xl p-5 box-border flex flex-col gap-y-3 group hover:drop-shadow-md hover:drop-shadow-gray-300/80 cursor-pointer transition duration-75 ease-out animate-slideDown hover:animate-slideUp">
-                  <FaInstagram className="text-gray-200/70 group-hover:text-white" />
-                  <span className="text-white font-medium">Instagram</span>
-                  <span className="text-sm text-gray-300/80">andrew_1165</span>
-                </div>
-                <div className="bg-gray-800/50 border border-gray-300/20 rounded-2xl p-5 box-border flex flex-col gap-y-3 group hover:drop-shadow-md hover:drop-shadow-gray-300/80 cursor-pointer transition duration-75 ease-out animate-slideDown hover:animate-slideUp">
-                  <FiLinkedin className="text-gray-200/70 group-hover:text-white" />
-                  <span className="text-white font-medium">LinkedIn</span>
-                  <span className="text-sm text-gray-300/80">andrew.</span>
-                </div>
-                <div className="bg-gray-800/50 border border-gray-300/20 rounded-2xl p-5 box-border flex flex-col gap-y-3 group hover:drop-shadow-md hover:drop-shadow-gray-300/80 cursor-pointer transition duration-75 ease-out animate-slideDown hover:animate-slideUp">
-                  <FaWhatsapp className="text-gray-200/70 group-hover:text-white" />
-                  <span className="text-white font-medium">Whatsapp</span>
-                  <span className="text-sm text-gray-300/80">
-                    0822 1099 0298
-                  </span>
-                </div>
+                <a href="https://instagram.com/andrew_1165" target="_blank">
+                  <div className="bg-gray-800/50 grayscale border border-gray-300/20 rounded-2xl p-5 box-border flex flex-col gap-y-3 group hover:drop-shadow-md hover:drop-shadow-gray-300/80 cursor-pointer transition duration-75 ease-out animate-slideDown hover:animate-slideUp">
+                    <FaInstagram className="text-gray-200/70 group-hover:text-white" />
+                    <span className="text-white font-medium">Instagram</span>
+                    <span className="text-sm text-gray-300/80">
+                      andrew_1165
+                    </span>
+                  </div>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/andrew-webdev"
+                  target="_blank"
+                >
+                  <div className="bg-gray-800/50 grayscale border border-gray-300/20 rounded-2xl p-5 box-border flex flex-col gap-y-3 group hover:drop-shadow-md hover:drop-shadow-gray-300/80 cursor-pointer transition duration-75 ease-out animate-slideDown hover:animate-slideUp">
+                    <FiLinkedin className="text-gray-200/70 group-hover:text-white" />
+                    <span className="text-white font-medium">LinkedIn</span>
+                    <span className="text-sm text-gray-300/80">andrew.</span>
+                  </div>
+                </a>
+                <a
+                  href={`https://wa.me/6282210990298?text=${encodedText}`}
+                  target="_blank"
+                >
+                  <div className="bg-gray-800/50 grayscale border border-gray-300/20 rounded-2xl p-5 box-border flex flex-col gap-y-3 group hover:drop-shadow-md hover:drop-shadow-gray-300/80 cursor-pointer transition duration-75 ease-out animate-slideDown hover:animate-slideUp">
+                    <FaWhatsapp className="text-gray-200/70 group-hover:text-white" />
+                    <span className="text-white font-medium">Whatsapp</span>
+                    <span className="text-sm text-gray-300/80">
+                      0822 1099 0298
+                    </span>
+                  </div>
+                </a>
               </div>
             </ScrollFadeUp>
           </div>
           <div className="lg:w-2/5">
             <ScrollFadeUp>
-              <form onSubmit={handleSubmit} className="form-container bg-gray-900/80 grayscale border border-gray-500/30 rounded-2xl p-8 box-border">
+              <form
+                onSubmit={handleSubmit}
+                className="form-container bg-gray-900/80 grayscale border border-gray-500/30 rounded-2xl p-8 box-border"
+              >
                 <div className="form-heading-container pb-5 box-border">
                   <span className="text-gray-300/50 text-[13.5px] tracking-[3.5px] uppercase">
                     PROJECT INQUIRY
@@ -119,24 +185,47 @@ export const Footer = () => {
                     type="text"
                     name="name"
                     placeholder="Your name"
-                    className="block w-full border border-gray-500/30 placeholder:text-gray-100/50 bg-gray-800/50 rounded-2xl p-3 box-border"
+                    value={projectInquiry.name}
+                    onChange={handleChange}
+                    className="block w-full border border-gray-500/30 placeholder:text-gray-100/50 focus:placeholder:text-white focus:text-white bg-gray-800/50 text-gray-100/70 rounded-2xl p-3 box-border"
                   />
+                  {error.name && (
+                    <span className="text-gray-100/80 text-[14.5px] animate-shake">
+                      {error.name}
+                    </span>
+                  )}
                   <div className="flex flex-col gap-y-2">
                     <input
-                        type="email"
-                        name="email"
-                        placeholder="Your email"
-                        className="block w-full border border-gray-500/30 placeholder:text-gray-100/50 bg-gray-800/50 rounded-2xl p-3 box-border focus:placeholder:text-white focus:text-white peer"
+                      type="email"
+                      name="email"
+                      value={projectInquiry.email}
+                      onChange={handleChange}
+                      placeholder="Your email"
+                      className="block w-full border text-gray-100/70 border-gray-500/30 placeholder:text-gray-100/50 bg-gray-800/50 rounded-2xl p-3 box-border focus:placeholder:text-white focus:text-white peer"
                     />
-                    <span className="hidden peer-invalid:block peer-invalid:text-pink-500 mt-2 peer-invalid:animate-shake">Email format is not valid</span>
+                    <span className="hidden peer-invalid:block peer-invalid:text-pink-500 mt-2 peer-invalid:animate-shake">
+                      Email format is not valid
+                    </span>
+                    {error.email && (
+                      <span className="text-gray-100/80 text-[14.5px] animate-shake">
+                        {error.email}
+                      </span>
+                    )}
                   </div>
                   <textarea
-                    name="projectDesc"
-                    id="projectDesc"
+                    name="description"
+                    id="description"
                     rows={5}
-                    className="block w-full border border-gray-500/30 placeholder:text-gray-100/50 bg-gray-800/50 rounded-2xl p-3 box-border"
+                    value={projectInquiry.description}
+                    onChange={handleChange}
+                    className="block w-full border border-gray-500/30 text-gray-100/70 placeholder:text-gray-100/50 focus:placeholder:text-white focus:text-white bg-gray-800/50 rounded-2xl p-3 box-border"
                     placeholder="Tell me about your project"
                   ></textarea>
+                  {error.description && (
+                    <span className="text-gray-100/80 text-[14.5px] animate-shake">
+                      {error.description}
+                    </span>
+                  )}
                   <button
                     type="submit"
                     className="w-full rounded-full p-3 box-border bg-white text-black hover:bg-gray-100/80 transition duration-500 ease-in-out cursor-pointer"

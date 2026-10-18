@@ -12,9 +12,11 @@ export const Navbar = () => {
       <div className="fixed top-0 left-0 right-0 z-20 bg-black text-white p-8 box-border">
         <div className="w-10/11 mx-auto flex justify-between items-center">
           <div className="navbar-title-container font-bold">
-            <span className="text-primary text-2xl selection:bg-primary selection:text-white">
-              ANDREW.
-            </span>
+            <a href="/">
+              <span className="text-primary text-2xl selection:bg-primary selection:text-white">
+                ANDREW.
+              </span>
+            </a>
           </div>
           <div className="navbar-menu-container hidden md:block">
             <nav>
@@ -28,6 +30,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     Home
                   </NavLink>
@@ -40,6 +43,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     About
                   </NavLink>
@@ -52,6 +56,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     Project
                   </NavLink>
@@ -64,6 +69,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     Blog
                   </NavLink>
@@ -99,6 +105,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     Home
                   </NavLink>
@@ -111,6 +118,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     About
                   </NavLink>
@@ -123,6 +131,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     Project
                   </NavLink>
@@ -135,6 +144,7 @@ export const Navbar = () => {
                         ? "underline underline-primary text-primary font-bold underline-offset-5"
                         : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
                     }
+                    reloadDocument
                   >
                     Blog
                   </NavLink>

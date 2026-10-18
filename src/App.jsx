@@ -6,6 +6,7 @@ import ProjectPage from "./pages/Project/ProjectPage"
 import BlogPage from "./pages/Blog/BlogPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import ProjectDetailPage from "./pages/Project/ProjectDetailPage"
+import AchievementDetailPage from "./pages/Achievement/AchievementDetailPage"
 
 function App() {
 
@@ -16,12 +17,13 @@ function App() {
           {/* Static Routes */}
           <Route path="/" element={<HomePage />}/>
           <Route path="/about" element={<AboutPage />}/>
-          <Route path="/projects" element={<ProjectPage />} />
-          <Route path="/blogs" element={<BlogPage />} />
+          <Route path="/project" element={<ProjectPage />} />
+          <Route path="/blog" element={<BlogPage />} />
           <Route path="*" element={<NotFoundPage  />}/>
 
           {/* Dynamic Routes */}
           <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+          <Route path="/achievement/:slug" element={<AchievementDetailPage />}/>
         </Route>
     </Routes>
   )
