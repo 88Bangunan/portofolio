@@ -253,6 +253,7 @@ export const Footer = () => {
                     <Link
                       className="hover:text-gray-100/70 transition duration-500 ease-out"
                       to="/"
+                      reloadDocument
                     >
                       Home
                     </Link>
@@ -261,6 +262,7 @@ export const Footer = () => {
                     <Link
                       className="hover:text-gray-100/70 transition duration-500 ease-out"
                       to="/about"
+                      reloadDocument
                     >
                       About
                     </Link>
@@ -269,6 +271,7 @@ export const Footer = () => {
                     <Link
                       className="hover:text-gray-100/70 transition duration-500 ease-out"
                       to="/project"
+                      reloadDocument
                     >
                       Project
                     </Link>
