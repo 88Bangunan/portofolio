@@ -3,31 +3,34 @@ import { checkEmailFormat } from "../utils/checkEmailFormat";
 import { Link } from "react-router";
 import { ScrollFadeUp } from "./ScrollFadeUp";
 import { FiArrowUpRight, FiLinkedin } from "react-icons/fi";
-import { HiClipboardDocumentCheck, HiOutlineClipboardDocument } from "react-icons/hi2";
+import {
+  HiClipboardDocumentCheck,
+  HiOutlineClipboardDocument,
+} from "react-icons/hi2";
 import { FaCircleCheck } from "react-icons/fa6";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 
 const initialProject = {
-    name: "",
-    email: "",
-    description: ""
-}
+  name: "",
+  email: "",
+  description: "",
+};
 
 export const Footer = () => {
   const textContact = `Hallo Andrew 👋`;
   const encodedText = encodeURIComponent(textContact);
 
   const emailTextSubject = `Inquiry: [Nama Proyek/Kolaborasi Baru] — [Nama Anda]`;
-   const encodedSubject = encodeURIComponent(emailTextSubject)
+  const encodedSubject = encodeURIComponent(emailTextSubject);
 
-   const emailTextBody = `Halo Andrew,\n\nSaya [Nama Anda / Perusahaan Anda] tertarik untuk mendiskusikan sebuah proyek dengan Anda.\n\nBerikut adalah ringkasan singkatnya:\n- Jenis proyek: [Contoh: Website Redesign / Mobile App / Branding]\n- Perkiraan waktu/deadline: [Contoh: 1 bulan ke depan]\n- Deskripsi singkat: [Tuliskan detail kebutuhan Anda di sini]\n\nAnda bisa menghubungi saya kembali melalui email ini atau nomor WhatsApp: [Nomor HP/WA Anda - opsional].\n\nTerima kasih!`;
-   const encodedBody = encodeURIComponent(emailTextBody)
+  const emailTextBody = `Halo Andrew,\n\nSaya [Nama Anda / Perusahaan Anda] tertarik untuk mendiskusikan sebuah proyek dengan Anda.\n\nBerikut adalah ringkasan singkatnya:\n- Jenis proyek: [Contoh: Website Redesign / Mobile App / Branding]\n- Perkiraan waktu/deadline: [Contoh: 1 bulan ke depan]\n- Deskripsi singkat: [Tuliskan detail kebutuhan Anda di sini]\n\nAnda bisa menghubungi saya kembali melalui email ini atau nomor WhatsApp: [Nomor HP/WA Anda - opsional].\n\nTerima kasih!`;
+  const encodedBody = encodeURIComponent(emailTextBody);
 
   const [showPopUp, setShowPopUp] = useState(false);
 
-  const [projectInquiry, setProjectInquiry] = useState(initialProject)
+  const [projectInquiry, setProjectInquiry] = useState(initialProject);
 
-  const [error, setError] = useState({})
+  const [error, setError] = useState({});
 
   const handleCopyText = async () => {
     const textMail = `andrew17288@gmail.com`;
@@ -44,41 +47,47 @@ export const Footer = () => {
   };
 
   const handleError = () => {
-    const newErrors = {}
+    const newErrors = {};
 
-    if(projectInquiry.name.trim().length <= 0) newErrors.name = "Name can't be empty"
+    if (projectInquiry.name.trim().length <= 0)
+      newErrors.name = "Name can't be empty";
 
-    if(projectInquiry.email.trim().length <= 0) newErrors.email = "Email can't be empty"
-    else if(!checkEmailFormat(projectInquiry.email.trim())) newErrors.email = "Email format is not valid"
+    if (projectInquiry.email.trim().length <= 0)
+      newErrors.email = "Email can't be empty";
+    else if (!checkEmailFormat(projectInquiry.email.trim()))
+      newErrors.email = "Email format is not valid";
 
-    if(projectInquiry.description.trim().length <= 0) newErrors.description = "Please fill in project description field"
+    if (projectInquiry.description.trim().length <= 0)
+      newErrors.description = "Please fill in project description field";
 
-    return newErrors
-  }
+    return newErrors;
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const validate = handleError()
-    setError(validate)
-    if(Object.keys(validate).length > 0) return
+    const validate = handleError();
+    setError(validate);
+    if (Object.keys(validate).length > 0) return;
 
-    const encodedText = encodeURIComponent(`Hi Andrew, i'm interested to discuss a project with you. Below is my information\n\nName: ${projectInquiry.name}\n\nEmail: ${projectInquiry.email}\n\nAbout project: ${projectInquiry.description}`)
+    const encodedText = encodeURIComponent(
+      `Hi Andrew, i'm interested to discuss a project with you. Below is my information\n\nName: ${projectInquiry.name}\n\nEmail: ${projectInquiry.email}\n\nAbout project: ${projectInquiry.description}`,
+    );
 
-    window.location.href = `https://wa.me/6282210990298?text=${encodedText}` 
-    setProjectInquiry(initialProject)
-  }
+    window.location.href = `https://wa.me/6282210990298?text=${encodedText}`;
+    setProjectInquiry(initialProject);
+  };
 
   const handleChange = (e) => {
-    const {name, value} = e.target 
+    const { name, value } = e.target;
 
-    setError({...error, [name]: ""})
+    setError({ ...error, [name]: "" });
 
     setProjectInquiry({
-        ...projectInquiry,
-        [name]: value
-    })
-  }
+      ...projectInquiry,
+      [name]: value,
+    });
+  };
 
   return (
     <div className="border-t border-gray-300/30 relative">
@@ -253,7 +262,6 @@ export const Footer = () => {
                     <Link
                       className="hover:text-gray-100/70 transition duration-500 ease-out"
                       to="/"
-                      reloadDocument
                     >
                       Home
                     </Link>
@@ -262,7 +270,6 @@ export const Footer = () => {
                     <Link
                       className="hover:text-gray-100/70 transition duration-500 ease-out"
                       to="/about"
-                      reloadDocument
                     >
                       About
                     </Link>
@@ -271,7 +278,6 @@ export const Footer = () => {
                     <Link
                       className="hover:text-gray-100/70 transition duration-500 ease-out"
                       to="/project"
-                      reloadDocument
                     >
                       Project
                     </Link>

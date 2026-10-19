@@ -94,7 +94,6 @@ function AchievementPage() {
               <Link
                 key={achievement.id}
                 to={`/achievement/${achievement.slug}`}
-                reloadDocument
               >
                 <ScrollFadeUp>
                   <div className="border border-gray-300/50 rounded-2xl overflow-hidden animate-slideDown hover:animate-slideUp transition duraton-500 ease-in-out cursor-pointer">
@@ -151,7 +150,6 @@ function AchievementPage() {
                 <Link
                   key={achievement.id}
                   to={`/achievement/${achievement.slug}`}
-                  reloadDocument
                 >
                   <ScrollFadeUp>
                     <div className="border border-gray-300/50 rounded-2xl overflow-hidden animate-slideDown hover:animate-slideUp transition duraton-500 ease-in-out cursor-pointer">
