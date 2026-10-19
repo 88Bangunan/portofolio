@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { ProjectContext } from "../../context/ProjectContext";
 import { ScrollFadeUp } from "../../components/ScrollFadeUp";
+import { Link } from "react-router";
 
 function ProjectPage() {
   const { projects } = useContext(ProjectContext);
@@ -88,9 +89,9 @@ function ProjectPage() {
             {projectsCategoryFiltered
               .slice(0, projectsCategoryFiltered.length)
               .map((project) => (
-                <a
+                <Link
                   key={`project-${project.id}`}
-                  href={`/projects/${project.slug}`}
+                  to={`/projects/${project.slug}`}
                 >
                     <ScrollFadeUp>
                         <div className="rounded-lg relative overflow-hidden group">
@@ -124,16 +125,16 @@ function ProjectPage() {
                             </div>
                         </div>
                     </ScrollFadeUp>
-                </a>
+                </Link>
               ))}
           </>
         ) : (
           <>
             {projects.length > 0 &&
               projects.map((project) => (
-                <a
+                <Link
                   key={`project-${project.id}`}
-                  href={`/projects/${project.slug}`}
+                  to={`/projects/${project.slug}`}
                 >
                     <ScrollFadeUp>
                         <div className="rounded-lg relative overflow-hidden group">
@@ -167,7 +168,7 @@ function ProjectPage() {
                             </div>
                         </div>
                     </ScrollFadeUp>
-                </a>
+                </Link>
               ))}
           </>
         )}
