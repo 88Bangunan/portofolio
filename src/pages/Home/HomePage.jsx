@@ -67,6 +67,9 @@ function HomePage() {
   const [categoryFilter, setCategoryFilter] = useState("");
   const [projectsCategoryFiltered, setProjectsCategoryFiltered] = useState([]);
 
+  const textContact = `Hallo Andrew 👋`;
+  const encodedText = encodeURIComponent(textContact);
+
   useEffect(() => {
     if (categoryFilter.trim().length <= 0) {
       return setProjectsCategoryFiltered([]);
@@ -150,15 +153,33 @@ function HomePage() {
                 <span className="capitalize font-semibold text-gray-200/80">
                   Find me on
                 </span>
-                <span className="bg-primary/50 text-secondary text-lg rounded-full p-2 box-border cursor-pointer hover:bg-primary/30 transition duration-500 ease-in-out">
-                  <FaInstagram />
-                </span>
-                <span className="bg-primary/50 text-secondary text-lg rounded-full p-2 box-border cursor-pointer hover:bg-primary/30 transition duration-500 ease-in-out">
-                  <FaWhatsapp />
-                </span>
-                <span className="bg-primary/50 text-secondary text-lg rounded-full p-2 box-border cursor-pointer hover:bg-primary/30 transition duration-500 ease-in-out">
-                  <FaLinkedinIn />
-                </span>
+                <a
+                  href="https://instagram.com/andrew_1165"
+                  target="_blank"
+                  className="rounded-full p-2 box-border bg-primary/50 flex items-center justify-center cursor-pointer hover:bg-primary/30 transition duration-500 ease-in-out"
+                >
+                  <span className="text-secondary text-lg">
+                    <FaInstagram />
+                  </span>
+                </a>
+                <a
+                  href={`https://wa.me/6282210990298?text=${encodedText}`}
+                  target="_blank"
+                  className="rounded-full p-2 box-border bg-primary/50 flex items-center justify-center cursor-pointer hover:bg-primary/30 transition duration-500 ease-in-out"
+                >
+                  <span className="text-secondary text-lg">
+                    <FaWhatsapp />
+                  </span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/andrew-webdev"
+                  target="_blank"
+                  className="rounded-full p-2 box-border bg-primary/50 flex items-center justify-center cursor-pointer hover:bg-primary/30 transition duration-500 ease-in-out"
+                >
+                  <span className="text-secondary text-lg">
+                    <FaLinkedinIn />
+                  </span>
+                </a>
               </div>
             </div>
           </div>
@@ -224,15 +245,33 @@ function HomePage() {
           <span className="capitalize font-semibold text-gray-200/80">
             Find me on
           </span>
-          <span className="bg-primary/50 text-secondary text-lg rounded-full p-2 box-border">
-            <FaInstagram />
-          </span>
-          <span className="bg-primary/50 text-secondary text-lg rounded-full p-2 box-border">
-            <FaWhatsapp />
-          </span>
-          <span className="bg-primary/50 text-secondary text-lg rounded-full p-2 box-border">
-            <FaLinkedinIn />
-          </span>
+          <a
+            href="https://instagram.com/andrew_1165"
+            target="_blank"
+            className="rounded-full p-2 box-border bg-primary/50 flex items-center justify-center"
+          >
+            <span className="text-secondary text-lg">
+              <FaInstagram />
+            </span>
+          </a>
+          <a
+            href={`https://wa.me/6282210990298?text=${encodedText}`}
+            target="_blank"
+            className="rounded-full p-2 box-border bg-primary/50 flex items-center justify-center"
+          >
+            <span className="text-secondary text-lg">
+              <FaWhatsapp />
+            </span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/andrew-webdev"
+            target="_blank"
+            className="rounded-full p-2 box-border bg-primary/50 flex items-center justify-center"
+          >
+            <span className="text-secondary text-lg">
+              <FaLinkedinIn />
+            </span>
+          </a>
         </div>
         <div className="pt-7 box-border">
           <Marquee
@@ -304,9 +343,9 @@ function HomePage() {
                 {projectsCategoryFiltered
                   .slice(0, projectsCategoryFiltered.length)
                   .map((project) => (
-                    <a
+                    <Link
                       key={`project-${project.id}`}
-                      href={`/projects/${project.slug}`}
+                      to={`/projects/${project.slug}`}
                     >
                       <ScrollFadeUp>
                         <div className="rounded-lg relative overflow-hidden group">
@@ -340,16 +379,16 @@ function HomePage() {
                           </div>
                         </div>
                       </ScrollFadeUp>
-                    </a>
+                    </Link>
                   ))}
               </>
             ) : (
               <>
                 {projects.length > 0 &&
                   projects.slice(0, 4).map((project) => (
-                    <a
+                    <Link
                       key={`project-${project.id}`}
-                      href={`/projects/${project.slug}`}
+                      to={`/projects/${project.slug}`}
                     >
                       <ScrollFadeUp>
                         <div className="rounded-lg relative overflow-hidden group">
@@ -383,7 +422,7 @@ function HomePage() {
                           </div>
                         </div>
                       </ScrollFadeUp>
-                    </a>
+                    </Link>
                   ))}
               </>
             )}
@@ -529,6 +568,14 @@ function HomePage() {
               </ScrollFadeUp>
             </Link>
           ))}
+        </div>
+        <div className="view-all-achievements-text-container md:hidden">
+          <Link to="/achievement">
+            <span className="text-gray-200/70 tracking-wide flex items-center gap-x-2 capitalize">
+              View all achievements
+              <FaArrowRight />
+            </span>
+          </Link>
         </div>
       </div>
       <div className="tools-container flex flex-col gap-y-10 py-27 box-border">
