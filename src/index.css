@@ -16,6 +16,8 @@
   --animate-slideDownHidden: slideDownHidden .5s ease-out forwards;
   --animate-slideUpShow: slideUpShow .5s ease-out forwards;
   --animate-shake: shake .5s ease-out forwards;
+  --animate-slideUpHidden: slideUpHidden .5s ease-out forwards; 
+  --animate-slideDownShow: slideDownShow .5s ease-out forwards;
 
   @keyframes scrollFadeUp{
     0%{
@@ -43,6 +45,28 @@
     }
     100% {
       transform: translateY(0);
+    }
+  }
+
+  @keyframes slideUpHidden {
+    0% {
+      opacity: 1;
+      transform: translateY(5%)
+    }
+    100%{
+      opacity: 0;
+      transform: translateY(0)
+    }
+  }
+
+  @keyframes slideDownShow {
+    0%{
+      opacity: 0;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(5%);
     }
   }
 

@@ -258,14 +258,14 @@ function HomePage() {
               </div>
               <div className="filter-container flex flex-col gap-y-4">
                 <div className="grid grid-cols-2 gap-3 md:grid-cols-3 md:w-12/13 lg:w-7/8 xl:w-3/4">
-                  {["E-COMMERCE STRATEGY", "WEB DEVELOPMENT", "UI/UX"].map(
+                  {["E-Commerce Strategy", "Web Development", "UI/UX"].map(
                     (category, index) => (
                       <div
                         key={category.id}
                         className={`rounded-full p-3 box-border flex justify-center items-center text-center hover:bg-gray-300/50 cursor-pointer transition duration-500 ease-in-out ${categoryFilter === category ? "bg-gray-300/50" : "bg-gray-300/80"}`}
                         onClick={() => setCategoryFilter(category)}
                       >
-                        <span className="text-white tracking-widest text-[13.5px]">
+                        <span className="text-white tracking-widest text-[13.5px] uppercase">
                           {category}
                         </span>
                       </div>
@@ -294,36 +294,38 @@ function HomePage() {
                         key={`project-${project.id}`}
                         href={`/projects/${project.slug}`}
                       >
-                        <div className="rounded-lg relative overflow-hidden group">
-                          <img
-                            className="rounded-xl shadow-xl w-full object-cover hover:scale-105 transition duration-500 ease-in-out hover:cursor-pointer"
-                            src={project.image}
-                            alt=""
-                          />
-                          <div className="absolute bg-black/90 blur-lg sm:blur-xl top-3/4 md:top-2/3 lg:top-3/4 left-0 right-0 bottom-0"></div>
-                          <div className="top-information-section absolute top-5 md:top-3 left-5 right-5">
-                            <div className="flex items-center justify-between text-[10.5px]">
-                              <div className="bg-gray-500 grayscale p-2 box-border rounded-full border border-gray-300/30 text-white">
-                                <span className="tracking-widest uppercase">
-                                  {project.category}
+                        <ScrollFadeUp>
+                          <div className="rounded-lg relative overflow-hidden group">
+                            <img
+                              className="rounded-xl shadow-xl w-full object-cover hover:scale-105 transition duration-500 ease-in-out hover:cursor-pointer"
+                              src={project.image}
+                              alt=""
+                            />
+                            <div className="absolute bg-black/90 blur-lg sm:blur-xl top-3/4 md:top-2/3 lg:top-3/4 left-0 right-0 bottom-0"></div>
+                            <div className="top-information-section absolute top-5 md:top-3 left-5 right-5">
+                              <div className="flex items-center justify-between text-[10.5px]">
+                                <div className="bg-gray-500 grayscale p-2 box-border rounded-full border border-gray-300/30 text-white">
+                                  <span className="tracking-widest uppercase">
+                                    {project.category}
+                                  </span>
+                                </div>
+                                <div className="bg-gray-500 grayscale py-1 px-3 box-border rounded-full border border-gray-300/30 text-white">
+                                  <span>{project.year}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bottom-information-section absolute top-3/4 md:top-2/3 lg:top-3/4 left-5 right-5">
+                              <div className="flex flex-col gap-y-3">
+                                <span className="text-white font-bold text-xl sm:text-2xl md:text-lg lg:text-2xl xl:text-[26px]">
+                                  {project.title}
+                                </span>
+                                <span className="animate-slideDownHidden group-hover:animate-slideUpShow transition duration-500 ease-out text-gray-100/80 text-[14px]">
+                                  {project.role}
                                 </span>
                               </div>
-                              <div className="bg-gray-500 grayscale py-1 px-3 box-border rounded-full border border-gray-300/30 text-white">
-                                <span>{project.year}</span>
-                              </div>
                             </div>
                           </div>
-                          <div className="bottom-information-section absolute top-3/4 md:top-2/3 lg:top-3/4 left-5 right-5">
-                            <div className="flex flex-col gap-y-3">
-                              <span className="text-white font-bold text-xl sm:text-2xl md:text-lg lg:text-2xl xl:text-[26px]">
-                                {project.title}
-                              </span>
-                              <span className="animate-slideDownHidden group-hover:animate-slideUpShow transition duration-500 ease-out text-gray-100/80 text-[14px]">
-                                {project.role}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                        </ScrollFadeUp>
                       </a>
                     ))}
                 </>
@@ -335,36 +337,38 @@ function HomePage() {
                         key={`project-${project.id}`}
                         href={`/projects/${project.slug}`}
                       >
-                        <div className="rounded-lg relative overflow-hidden group">
-                          <img
-                            className="rounded-xl shadow-xl w-full object-cover hover:scale-105 transition duration-500 ease-in-out hover:cursor-pointer"
-                            src={project.image}
-                            alt=""
-                          />
-                          <div className="absolute bg-black/90 blur-lg sm:blur-xl top-3/4 md:top-2/3 lg:top-3/4 left-0 right-0 bottom-0"></div>
-                          <div className="top-information-section absolute top-5 md:top-3 left-5 right-5">
-                            <div className="flex items-center justify-between text-[10.5px]">
-                              <div className="bg-gray-500 grayscale p-2 box-border rounded-full border border-gray-300/30 text-white">
-                                <span className="tracking-widest uppercase">
-                                  {project.category}
+                        <ScrollFadeUp>
+                          <div className="rounded-lg relative overflow-hidden group">
+                            <img
+                              className="rounded-xl shadow-xl w-full object-cover hover:scale-105 transition duration-500 ease-in-out hover:cursor-pointer"
+                              src={project.image}
+                              alt=""
+                            />
+                            <div className="absolute bg-black/90 blur-lg sm:blur-xl top-3/4 md:top-2/3 lg:top-3/4 left-0 right-0 bottom-0"></div>
+                            <div className="top-information-section absolute top-5 md:top-3 left-5 right-5">
+                              <div className="flex items-center justify-between text-[10.5px]">
+                                <div className="bg-gray-500 grayscale p-2 box-border rounded-full border border-gray-300/30 text-white">
+                                  <span className="tracking-widest uppercase">
+                                    {project.category}
+                                  </span>
+                                </div>
+                                <div className="bg-gray-500 grayscale py-1 px-3 box-border rounded-full border border-gray-300/30 text-white">
+                                  <span>{project.year}</span>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bottom-information-section absolute top-3/4 md:top-2/3 lg:top-3/4 left-5 right-5">
+                              <div className="flex flex-col gap-y-3">
+                                <span className="text-white font-bold text-xl sm:text-2xl md:text-lg lg:text-2xl xl:text-[26px]">
+                                  {project.title}
+                                </span>
+                                <span className="animate-slideDownHidden group-hover:animate-slideUpShow transition duration-500 ease-out text-gray-100/80 text-[14px]">
+                                  {project.role}
                                 </span>
                               </div>
-                              <div className="bg-gray-500 grayscale py-1 px-3 box-border rounded-full border border-gray-300/30 text-white">
-                                <span>{project.year}</span>
-                              </div>
                             </div>
                           </div>
-                          <div className="bottom-information-section absolute top-3/4 md:top-2/3 lg:top-3/4 left-5 right-5">
-                            <div className="flex flex-col gap-y-3">
-                              <span className="text-white font-bold text-xl sm:text-2xl md:text-lg lg:text-2xl xl:text-[26px]">
-                                {project.title}
-                              </span>
-                              <span className="animate-slideDownHidden group-hover:animate-slideUpShow transition duration-500 ease-out text-gray-100/80 text-[14px]">
-                                {project.role}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
+                        </ScrollFadeUp>
                       </a>
                     ))}
                 </>
@@ -452,7 +456,7 @@ function HomePage() {
                 </span>
               </ScrollFadeUp>
               <ScrollFadeUp>
-                <Link to="/achievements">
+                <Link to="/achievement" reloadDocument>
                   <span className="hidden md:flex text-[14.5px] text-gray-300/80 items-center gap-x-3">
                     View all achievements
                     <FaArrowRight />
@@ -466,41 +470,51 @@ function HomePage() {
               .slice(0, achievements.length - 1)
               .map((achievement) => (
                 <Link key={achievement.id} to={`/achievement/${achievement.slug}`} reloadDocument>
-                  <div className="border border-gray-300/50 rounded-2xl overflow-hidden animate-slideDown hover:animate-slideUp transition duraton-500 ease-in-out cursor-pointer">
-                    <div className="relative">
-                      <iframe
-                        className="w-full h-73.5 xl:h-84.5 border-0 rounded-t-2xl"
-                        src={achievement.source}
-                        title={achievement.title}
-                        allow="fullscreen"
-                        allowFullScreen
-                        scrolling="no"
-                      ></iframe>
-                      <a href={achievement.source} target="_blank">
-                        <div className="w-5 h-5 absolute top-6/7 right-5 bg-gray-500 cursor-pointer">
-                          <div className="flex justify-center items-center h-5">
-                            <div className="w-3 h-3 border border-gray-300"></div>
+                  <ScrollFadeUp>
+                    <div className="border border-gray-300/50 rounded-2xl overflow-hidden animate-slideDown hover:animate-slideUp transition duraton-500 ease-in-out cursor-pointer">
+                      <div className="relative">
+                        <iframe
+                          className="w-full h-73.5 xl:h-84.5 border-0 rounded-t-2xl"
+                          src={achievement.source}
+                          title={achievement.title}
+                          allow="fullscreen"
+                          allowFullScreen
+                          scrolling="no"
+                        ></iframe>
+                        <a href={achievement.source} target="_blank">
+                          <div className="w-5 h-5 absolute top-6/7 right-5 bg-gray-500 cursor-pointer">
+                            <div className="flex justify-center items-center h-5">
+                              <div className="w-3 h-3 border border-gray-300"></div>
+                            </div>
                           </div>
+                        </a>
+                      </div>
+                      <div className="certificates-achievements-information-container py-3 px-5 box-border flex flex-col gap-y-3">
+                        <ScrollFadeUp>
+                          <span className="category text-[13.5px] text-gray-400/80 font-medium tracking-[3.5px]">
+                            {achievement.category}
+                          </span>
+                        </ScrollFadeUp>
+                        <div className="flex items-center justify-between">
+                          <ScrollFadeUp>
+                            <span className="text-white font-semibold text-lg tracking-tighter">
+                              {achievement.title}
+                            </span>
+                          </ScrollFadeUp>
+                          <ScrollFadeUp>
+                            <span className="text-[13.5px] text-gray-400/80 font-medium tracking-wide">
+                              {achievement.year}
+                            </span>
+                          </ScrollFadeUp>
                         </div>
-                      </a>
-                    </div>
-                    <div className="certificates-achievements-information-container py-3 px-5 box-border flex flex-col gap-y-3">
-                      <span className="category text-[13.5px] text-gray-400/80 font-medium tracking-[3.5px]">
-                        {achievement.category}
-                      </span>
-                      <div className="flex items-center justify-between">
-                        <span className="text-white font-semibold text-lg tracking-tighter">
-                          {achievement.title}
-                        </span>
-                        <span className="text-[13.5px] text-gray-400/80 font-medium tracking-wide">
-                          {achievement.year}
-                        </span>
-                      </div>
-                      <div className="text-gray-200/50 font-medium leading-6 line-clamp-3">
-                        {achievement.description[0].text}
+                        <ScrollFadeUp>
+                          <div className="text-gray-200/50 font-medium leading-6 line-clamp-3">
+                            {achievement.description[0].text}
+                          </div>
+                        </ScrollFadeUp>
                       </div>
                     </div>
-                  </div>
+                  </ScrollFadeUp>
                 </Link>
               ))}
           </div>

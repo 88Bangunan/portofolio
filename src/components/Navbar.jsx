@@ -1,15 +1,31 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { NavLink } from "react-router"
 import {RxHamburgerMenu} from "react-icons/rx"
 
 export const Navbar = () => {
     const textContact = `Hallo Andrew 👋`
     const encodedText = encodeURIComponent(textContact)
+    const ref = useRef(null)
 
     const [responsiveNav, setResponsiveNav] = useState(false)
 
+    useEffect(() => {
+      if(responsiveNav) {
+        ref.current.classList.remove('hidden')
+        if(ref.current.className.includes('animate-slideUpHidden')) ref.current.classList.remove('animate-slideUpHidden')
+        ref.current.classList.add('animate-slideDownShow')
+      }
+      
+      if(!responsiveNav && ref.current.className.includes("animate-slideDownShow")) {
+        ref.current.classList.remove('hidden')
+        ref.current.classList.remove('animate-slideDownShow')
+        ref.current.classList.add('animate-slideUpHidden')
+      }
+
+    }, [responsiveNav])
+
     return (
-      <div className="fixed top-0 left-0 right-0 z-20 bg-black text-white p-8 box-border">
+      <div className="fixed top-0 left-0 right-0 z-40 bg-black text-white p-8 box-border">
         <div className="w-10/11 mx-auto flex justify-between items-center">
           <div className="navbar-title-container font-bold">
             <a href="/">
@@ -62,19 +78,6 @@ export const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to="/blog"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "underline underline-primary text-primary font-bold underline-offset-5"
-                        : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
-                    }
-                    reloadDocument
-                  >
-                    Blog
-                  </NavLink>
-                </li>
-                <li>
                   <a
                     href={`https://wa.me/6282210990298?text=${encodedText}`}
                     target="_blank"
@@ -92,10 +95,10 @@ export const Navbar = () => {
             onClick={() => setResponsiveNav(!responsiveNav)}
           />
         </div>
-        {responsiveNav && (
-          <div className="navbar-menu-container w-10/11 mx-auto py-5">
+        
+          <div ref={ref} className={`navbar-menu-container h-screen absolute top-15 left-0 right-0 bg-black opacity-0 hidden text-3xl mx-auto py-30 px-8 box-border`}>
             <nav>
-              <ul className="flex flex-col gap-y-3">
+              <ul className="flex flex-col gap-y-5">
                 <li>
                   <NavLink
                     to="/"
@@ -137,19 +140,6 @@ export const Navbar = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink
-                    to="/blog"
-                    className={({ isActive }) =>
-                      isActive
-                        ? "underline underline-primary text-primary font-bold underline-offset-5"
-                        : "font-semibold hover:text-primary transition duration-500 ease-in-out bg-linear-to-r from-primary to-violet-500 bg-clip-text text-transparent"
-                    }
-                    reloadDocument
-                  >
-                    Blog
-                  </NavLink>
-                </li>
-                <li>
                   <a
                     href={`https://wa.me/6282210990298?text=${encodedText}`}
                     target="_blank"
@@ -162,7 +152,7 @@ export const Navbar = () => {
               </ul>
             </nav>
           </div>
-        )}
+        
       </div>
     );
 }

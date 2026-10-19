@@ -134,7 +134,7 @@ export const OfferCarousel = () => {
                           className="w-full object-cover aspect-10/10"
                           alt=""
                         />
-                        <span className="text-lg text-blue-800 font-semibold">
+                        <span className="text-lg text-white font-semibold">
                           {item.offerText}
                         </span>
                       </div>

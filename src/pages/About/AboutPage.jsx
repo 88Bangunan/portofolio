@@ -305,7 +305,7 @@ function AboutPage() {
             </div>
             <div className="md:w-1/2">
               <ScrollFadeUp>
-                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] xl:text-lg leading-6 xl:leading-7 text-end">
+                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] xl:text-lg leading-6 xl:leading-7 text-justify md:text-end">
                   My entry into the digital world began when I was managing
                   online storefronts on major marketplaces like Shopee and
                   Tokopedia to expand my parents' business. However, as
@@ -334,7 +334,7 @@ function AboutPage() {
             </div>
             <div className="md:w-1/2">
               <ScrollFadeUp>
-                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] xl:text-lg leading-6 xl:leading-7">
+                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] xl:text-lg leading-6 xl:leading-7 text-justify md:text-start">
                   My fascination with the web began with visuals. I loved seeing
                   how clean lines, thoughtful layouts, and great typography
                   could transform a blank screen into an engaging digital space.
@@ -359,7 +359,7 @@ function AboutPage() {
             </div>
             <div className="md:w-1/2">
               <ScrollFadeUp>
-                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] xl:text-lg xl:leading-7 leading-6 text-end">
+                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] xl:text-lg xl:leading-7 leading-6 text-justify md:text-end">
                   That curiosity pushed me deeper into the world of backend
                   engineering. I realized that a truly great website isn't just
                   about beautiful pixels; it’s about the silent engine that
@@ -384,7 +384,7 @@ function AboutPage() {
             </div>
             <div className="md:w-1/2">
               <ScrollFadeUp>
-                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] leading-6 xl:text-lg xl:leading-7">
+                <p className="text-gray-200/70 text-[13.5px] sm:text-[14.5px] leading-6 xl:text-lg xl:leading-7 text-justify md:text-start">
                   Today, I focus entirely on mastering Full Stack Web
                   Development. I thrive on the challenge of taking a project
                   from an empty canvas, building its visual frontend,
